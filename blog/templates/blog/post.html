@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+	<h3>{{post.title}}</h3>
+	<h6>on {{post.date}}</h6>
+	<h6>by {{post.username}}</h6>
+	{{post.body|safe|linebreaks}}
+</center>
+
+<!--{% include "personal/includes/snippet.html" %}-->
+{% endblock %}

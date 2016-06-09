@@ -1,0 +1,71 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>@Django-Python!</title>
+    <meta charset="utf-8" />
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'personal/css/bootstrap.min.css' %}" type = "text/css"/>
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    
+    <style type="text/css">
+        html,
+        body {
+          height:100%
+        }
+    </style>
+</head>
+
+<body class="body" style="background-color:#f6f6f6">
+
+    <div id="header">
+    {% block header %}
+    <a href="{% url 'index' %}">{% trans "Home" %}</a> | 
+
+    {% if user.is_authenticated %}
+        {% trans "Logged in" %}: {{ user.username }} 
+        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
+        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+    {% else %}
+       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+    {% endif %}
+    <hr />
+    {% endblock %}
+    </div>
+
+
+    <div class="container-fluid" style="min-height:95%; ">
+        <div class="row">
+              <div class="col-sm-2">
+                  <br>
+                  <center>
+                    <img src="{% static 'personal/img/django-logo.png' %}" class="responsive-img" style='max-height:100px;' alt="face">
+                  </center>
+              </div>
+              <div class="col-sm-10">
+                  <br>
+                  <center>
+                  {% if user.is_authenticated %}
+                  <h1>{{user.username}}'s Blog</h1>
+                  {% else %}
+                  <h1>Blogging App</h1>
+                  {% endif %}
+                  </center>
+              </div>
+        </div><hr>
+
+
+
+    <div id="content">
+    {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+    {% block footer %}
+        <hr />
+    {% endblock %}
+    </div>
+</body>
+
+</html>

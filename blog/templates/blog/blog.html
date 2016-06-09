@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	{% for post in object_list %}
+		<h4>{{post.date|date:"Y-m-d"}}</h4>
+		<a href="/blog/{{post.id}}">{{post.title}}</a>
+	{% endfor %}
+</div>
+
+
+<!--{% include "personal/includes/snippet.html" %}-->
+{% endblock %}

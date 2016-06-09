@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+{% if user.is_authenticated %}
+	<h1>Welcome {{user.username}}!</h1>
+	<a href="/create">Create New Blog</a>
+{% else %}
+	<h1> Login/Register to get started with blog writing!</h1>
+{% endif %}
+</center>
+{% endblock %}

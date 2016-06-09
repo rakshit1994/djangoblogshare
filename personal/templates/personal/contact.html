@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+<h3>{% include "personal/includes/snippet.html" %}</h3>
+{% for c in content %}
+<h2>{{c}}</h2>
+{% endfor %}
+</center>
+{% endblock %}
